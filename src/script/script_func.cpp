@@ -4,6 +4,7 @@ extern int lua_info_log(lua_State* L);
 
 extern int tolua_role_open(lua_State* tolua_S);
 extern int tolua_npc_open(lua_State* tolua_S);
+extern int tolua_event_open(lua_State* tolua_S);
 
 int lua_info_log(lua_State* L)
 {
@@ -21,6 +22,7 @@ LUA_FUNC g_RegPackageList[] =
 {
     { "role.pkg",			tolua_role_open },
 	{ "npc.pkg",            tolua_npc_open  },
+	{ "event.pkg",			tolua_event_open},
 
     { "", 0 }
 };

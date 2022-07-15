@@ -1,14 +1,10 @@
 cmake_minimum_required (VERSION 3.20)
 
 project(server)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-#set(CMAKE_VERBOSE_MAKEFILE on)
-
-include (precompile)
-include (project)
-include (toluapp)
-include (fetch_content)
+include (FetchContent)
+FetchContent_Declare(cmake_tool GIT_REPOSITORY https://github.com/nearmeng/cmake_tools.git GIT_TAG master)
+FetchContent_MakeAvailable(cmake_tool)
 
 fetch_content(server_base https://github.com/nearmeng/server_base.git master)
 fetch_content(app_proto https://github.com/nearmeng/app_proto.git master)
