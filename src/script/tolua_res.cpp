@@ -1,6 +1,6 @@
 /*
 ** Lua binding: res
-** Generated automatically by toluapp-1.0.94 on Fri Jul 15 14:45:14 2022.
+** Generated automatically by toluapp-1.0.94 on Fri Jul 15 19:55:56 2022.
 */
 
 #include "stdafx.h"
@@ -19,8 +19,8 @@ TOLUA_API int tolua_res_open (lua_State* tolua_S);
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
- tolua_usertype(tolua_S,"RES_BASE");
  tolua_usertype(tolua_S,"ACHIEVE_RES");
+ tolua_usertype(tolua_S,"RES_BASE");
 }
 
 /* get function: nCondType of class  ACHIEVE_RES */

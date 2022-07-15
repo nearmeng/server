@@ -1,6 +1,6 @@
 /*
 ** Lua binding: global_config
-** Generated automatically by toluapp-1.0.94 on Fri Jul 15 14:45:14 2022.
+** Generated automatically by toluapp-1.0.94 on Fri Jul 15 19:55:56 2022.
 */
 
 #include "stdafx.h"

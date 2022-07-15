@@ -10,7 +10,7 @@ fetch_content(server_base https://github.com/nearmeng/server_base.git master)
 fetch_content(app_proto https://github.com/nearmeng/app_proto.git master)
 
 init_project ()
-pre_toluapp(${BASE_DIR}/src/script)
+pre_toluapp(src/script)
 
 pre_project(server RUNTIME)
 add_project()
