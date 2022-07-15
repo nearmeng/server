@@ -7,6 +7,9 @@
 
 #define MAX_ROLE_DATA_SIZE       (500 * 1024)
 
+struct EVENT_INFO;
+struct EVENT_PARAM;
+
 class CRoleModule : public CServerModule
 {
 public:

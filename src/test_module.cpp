@@ -23,6 +23,7 @@
 
 #include "test_coro.h"
 #include "session/session_module.h"
+#include "event/server_event.h"
 
 BOOL do_send_control_ack(SSMSG_CONTEXT* pCtx, int32_t nResult, const char* pDesc)
 {
@@ -108,7 +109,7 @@ BOOL CTestModule::init(BOOL bResume)
 	INF("test module is init");
 	
     register_server_msg_handler(a2a_control_req, on_control);
-
+	
     int32_t nCount = 0;
     const ACHIEVE_RES* pRes = CResMgr<ACHIEVE_RES>::instance().get_first_res();
     while (pRes)

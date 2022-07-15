@@ -4,7 +4,7 @@
 #include "tloghelp/tlogload.h"
 #include "lua/lua_script.h"
 #include "lua/script_mgr.h"
-#include "config/global_config.h"
+#include "config/server_config.h"
 
 #include "bt/bt_mgr.h"
 #include "event/server_event.h"
@@ -16,6 +16,9 @@
 #include "user/gs_user_module.h"
 #include "role/role_module.h"
 
+#include "define/object_def.h"
+#include "define/server_event_def.h"
+
 extern LUA_FUNC g_RegPackageList[];
 extern LUA_FUNC g_RegLuaFunc[];
 extern LUA_FUNC g_ServerBasePackageList[];
@@ -23,6 +26,10 @@ extern LUA_FUNC g_ServerBaseLuaFunc[];
 
 extern BOOL reg_bt_action(void);
 extern BOOL reg_bt_owner(void);
+
+extern int tolua_enum_open(lua_State* tolua_S);
+extern int tolua_global_config_open(lua_State* tolua_S);
+extern int tolua_res_open(lua_State* tolua_S);
 
 CRole role;
 
@@ -357,11 +364,20 @@ Exit1:
     CMGApp* pServer = &CMGApp::instance();
     
     MG_CONFIG config;
+	config.vToluaFunc.push_back(tolua_global_config_open);
+	config.vToluaFunc.push_back(tolua_enum_open);
+	config.vToluaFunc.push_back(tolua_res_open);
+
+	config.m_pConfigData = &g_ServerConfig;
+	config.m_pcszConfigClassName = "SERVER_CONFIG";
     pServer->set_config(config);
+
+	REG_EVENT_DEF(evtRoleSyncData, otRole, evtStaticRoleBegin, evtStaticRoleEnd);
+	REG_EVENT_DEF(evtRoleKillNpc, otRole, evtDynamicBegin, evtDynamicEnd);
 
     nRetCode = pServer->init("test_server", argc, argv);
     LOG_PROCESS_ERROR(nRetCode);
-
+	
     pServer->run_mainloop();
 
     pServer->fini();

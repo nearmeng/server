@@ -10,9 +10,11 @@
 #include "cs_proto/external_message.pb.h"
 
 #include "app/server_app.h"
+#include "config/server_config.h"
+
 #include "define/shm_def.h"
 #include "define/object_def.h"
-#include "config/server_config.h"
+#include "define/server_event_def.h"
 
 MG_REGISTER_MODULE(CRoleModule);
 

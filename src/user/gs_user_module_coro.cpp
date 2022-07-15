@@ -15,6 +15,7 @@
 #include "app/server_msg_handler.h"
 
 #include "define/error_def.h"
+#include "define/server_event_def.h"
 
 static char s_szUserData[MAX_USER_DATA_SIZE];
 static char s_szRoleData[MAX_ROLE_DATA_SIZE];
